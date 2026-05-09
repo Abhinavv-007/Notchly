@@ -18,6 +18,8 @@ enum SneakContentType {
     case mic
     case battery
     case download
+    case webNotification
+    case tempMail
 }
 
 struct sneakPeek {
@@ -44,6 +46,10 @@ struct ExpandedItem {
     var type: SneakContentType = .battery
     var value: CGFloat = 0
     var browser: BrowserType = .chromium
+    var title: String = ""
+    var subtitle: String = ""
+    var badgeCount: Int = 0
+    var webNotificationAppID: WebNotificationAppID?
 }
 
 @MainActor
@@ -271,6 +277,60 @@ class NotchlyViewCoordinator: ObservableObject {
                 self.expandingView.type = type
                 self.expandingView.value = value
                 self.expandingView.browser = browser
+                if !status {
+                    self.expandingView.title = ""
+                    self.expandingView.subtitle = ""
+                    self.expandingView.badgeCount = 0
+                    self.expandingView.webNotificationAppID = nil
+                }
+            }
+        }
+    }
+
+    func showWebNotificationPreview(
+        appID: WebNotificationAppID,
+        title: String,
+        subtitle: String?,
+        badgeCount: Int
+    ) {
+        Task { @MainActor in
+            guard Defaults[.addOnsEnabled], Defaults[.webNotificationsEnabled] else { return }
+            withAnimation(.interactiveSpring(response: 0.38, dampingFraction: 0.82, blendDuration: 0)) {
+                self.expandingView.show = true
+                self.expandingView.type = .webNotification
+                self.expandingView.value = CGFloat(badgeCount)
+                self.expandingView.browser = .chromium
+                self.expandingView.title = title
+                self.expandingView.subtitle = subtitle ?? ""
+                self.expandingView.badgeCount = badgeCount
+                self.expandingView.webNotificationAppID = appID
+            }
+        }
+    }
+
+    func showTempMailPreview(
+        message: ModihMessage,
+        badgeCount: Int
+    ) {
+        Task { @MainActor in
+            guard Defaults[.addOnsEnabled], Defaults[.modihMailEnabled] else { return }
+            guard !NotchAddonState.shared.isInlinePanelVisible else { return }
+
+            let title = message.oneTimeCodeCandidate.map { "OTP \($0)" } ?? message.bestPreviewLine
+            let subtitle = [message.senderDisplay, message.bodyPreview]
+                .map { ($0 ?? "").trimmingCharacters(in: .whitespacesAndNewlines) }
+                .filter { !$0.isEmpty && $0 != title }
+                .first ?? "New Modih Mail message"
+
+            withAnimation(.interactiveSpring(response: 0.38, dampingFraction: 0.82, blendDuration: 0)) {
+                self.expandingView.show = true
+                self.expandingView.type = .tempMail
+                self.expandingView.value = CGFloat(badgeCount)
+                self.expandingView.browser = .chromium
+                self.expandingView.title = title
+                self.expandingView.subtitle = subtitle
+                self.expandingView.badgeCount = badgeCount
+                self.expandingView.webNotificationAppID = nil
             }
         }
     }
