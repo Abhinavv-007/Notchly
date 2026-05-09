@@ -61,7 +61,7 @@ public enum ModihMailError: LocalizedError, Sendable {
     public var errorDescription: String? {
         switch self {
         case .notConfigured:
-            return "TEMP Mail is not configured."
+            return "Modih Mail is not configured."
         case .network(let detail):
             return "Network error: \(detail)"
         case .decoding(let detail):

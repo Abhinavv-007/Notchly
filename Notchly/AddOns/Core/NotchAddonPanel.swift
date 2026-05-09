@@ -24,7 +24,7 @@ public enum NotchAddonPanel: Equatable {
     var debugLabel: String {
         switch self {
         case .none: return "None"
-        case .modihMail: return "TEMP Mail"
+        case .modihMail: return "Modih Mail"
         case .webNotifications: return "Web Notifications"
         case .webApp(let id): return "Web App: \(id.displayName)"
         }

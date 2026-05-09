@@ -21,10 +21,13 @@ struct DynamicNotchApp: App {
     let updaterController: SPUStandardUpdaterController
 
     init() {
+        // Auto-update disabled until the Sparkle appcast feed is hosted.
+        // startingUpdater:false skips scheduled checks + the "no update found" popup.
         updaterController = SPUStandardUpdaterController(
-            startingUpdater: true, updaterDelegate: nil, userDriverDelegate: nil)
+            startingUpdater: false, updaterDelegate: nil, userDriverDelegate: nil)
+        updaterController.updater.automaticallyChecksForUpdates = false
+        updaterController.updater.automaticallyDownloadsUpdates = false
 
-        // Initialize the settings window controller with the updater controller
         SettingsWindowController.shared.setUpdaterController(updaterController)
     }
 
@@ -36,7 +39,6 @@ struct DynamicNotchApp: App {
                 }
             }
             .keyboardShortcut(KeyEquivalent(","), modifiers: .command)
-            CheckForUpdatesView(updater: updaterController.updater)
             Divider()
             Button("Restart Notchly") {
                 ApplicationRelauncher.restart()

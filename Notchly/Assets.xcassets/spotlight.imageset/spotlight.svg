@@ -1,35 +1,14 @@
-<svg width="689" height="1005" viewBox="0 0 689 1005" fill="none" xmlns="http://www.w3.org/2000/svg">
-<g opacity="0.27" filter="url(#filter0_f_95_52)">
-<ellipse cx="344.5" cy="925.5" rx="339.5" ry="74.5" fill="url(#paint0_linear_95_52)"/>
-</g>
-<g opacity="0.3" filter="url(#filter1_f_95_52)">
-<path fill-rule="evenodd" clip-rule="evenodd" d="M5 923.5C85.0575 575.896 218.5 -4 218.5 -4H481.5L684 923.5H683.772C677.163 883.632 527.795 851.757 344.5 851.757C161.205 851.757 11.8371 883.632 5.22814 923.5H5Z" fill="url(#paint1_linear_95_52)"/>
-<path fill-rule="evenodd" clip-rule="evenodd" d="M5 923.5C85.0575 575.896 218.5 -4 218.5 -4H481.5L684 923.5H683.772C677.163 883.632 527.795 851.757 344.5 851.757C161.205 851.757 11.8371 883.632 5.22814 923.5H5Z" fill="url(#paint2_linear_95_52)"/>
-</g>
-<defs>
-<filter id="filter0_f_95_52" x="0" y="846" width="689" height="159" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-<feFlood flood-opacity="0" result="BackgroundImageFix"/>
-<feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
-<feGaussianBlur stdDeviation="2.5" result="effect1_foregroundBlur_95_52"/>
-</filter>
-<filter id="filter1_f_95_52" x="0" y="-9" width="689" height="937.5" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-<feFlood flood-opacity="0" result="BackgroundImageFix"/>
-<feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
-<feGaussianBlur stdDeviation="2.5" result="effect1_foregroundBlur_95_52"/>
-</filter>
-<linearGradient id="paint0_linear_95_52" x1="-579.5" y1="1205.5" x2="-232.344" y2="1580.76" gradientUnits="userSpaceOnUse">
-<stop stop-color="#E1E1E1"/>
-<stop offset="1" stop-color="#3B3B3B"/>
-</linearGradient>
-<linearGradient id="paint1_linear_95_52" x1="342.5" y1="-4" x2="342.5" y2="924.669" gradientUnits="userSpaceOnUse">
-<stop stop-color="#D7D7D7"/>
-<stop offset="1" stop-color="#252525"/>
-</linearGradient>
-<linearGradient id="paint2_linear_95_52" x1="143" y1="338.48" x2="567.46" y2="361.604" gradientUnits="userSpaceOnUse">
-<stop stop-color="white" stop-opacity="0"/>
-<stop offset="0.24" stop-color="white" stop-opacity="0.21045"/>
-<stop offset="0.53" stop-color="#262626" stop-opacity="0.3657"/>
-<stop offset="1" stop-color="#2E2E2E" stop-opacity="0.69"/>
-</linearGradient>
-</defs>
+<svg width="1200" height="900" viewBox="0 0 1200 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect width="1200" height="900" rx="64" fill="#05070B"/>
+<circle cx="600" cy="520" r="360" fill="#2BBFDA" fill-opacity="0.13" filter="url(#b)"/>
+<rect x="180" y="168" width="840" height="540" rx="58" fill="#10161D" stroke="white" stroke-opacity="0.12"/>
+<path d="M455 168h290v46c0 34-28 62-62 62H517c-34 0-62-28-62-62v-46Z" fill="#020304"/>
+<rect x="364" y="426" width="472" height="126" rx="63" fill="#020304" stroke="white" stroke-opacity="0.12"/>
+<rect x="229" y="448" width="108" height="82" rx="41" fill="#0A0F15" stroke="white" stroke-opacity="0.13"/>
+<rect x="863" y="448" width="108" height="82" rx="41" fill="#0A0F15" stroke="white" stroke-opacity="0.13"/>
+<path d="M259 482h48v34h-48v-34Zm0 0 24 18 24-18" stroke="#D8F6FA" stroke-width="6" stroke-linejoin="round"/>
+<path d="M917 477c-20 0-36 16-36 36v8h72v-8c0-20-16-36-36-36Z" stroke="#D8F6FA" stroke-width="6"/><path d="M875 528h84" stroke="#D8F6FA" stroke-width="6" stroke-linecap="round"/><circle cx="944" cy="478" r="9" fill="#45CBE4"/>
+<rect x="422" y="462" width="78" height="54" rx="18" fill="#111820" stroke="white" stroke-opacity="0.12"/><path d="M445 493h116" stroke="#D8F6FA" stroke-opacity="0.55" stroke-width="8" stroke-linecap="round"/><path d="M588 493h128" stroke="#45CBE4" stroke-width="8" stroke-linecap="round"/><path d="M748 493h30" stroke="#D8F6FA" stroke-opacity="0.7" stroke-width="8" stroke-linecap="round"/>
+<path d="M404 601h392" stroke="#45CBE4" stroke-opacity="0.68" stroke-width="4" stroke-linecap="round"/>
+<defs><filter id="b" x="0" y="-80" width="1200" height="1100" filterUnits="userSpaceOnUse"><feGaussianBlur stdDeviation="95"/></filter></defs>
 </svg>

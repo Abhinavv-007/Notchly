@@ -91,7 +91,7 @@ struct NotchlyHeader: View {
                     AddonCircleIndicator(
                         symbol: "envelope",
                         accent: .white,
-                        tooltip: "TEMP Mail",
+                        tooltip: "Modih Mail",
                         badge: mailBadge
                     ) {
                         withAnimation(.interactiveSpring(response: 0.34, dampingFraction: 0.82, blendDuration: 0)) {

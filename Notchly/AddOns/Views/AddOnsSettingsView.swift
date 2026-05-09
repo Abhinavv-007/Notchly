@@ -56,7 +56,7 @@ struct AddOnsSettingsView: View {
 
     private var modihSection: some View {
         Section {
-            Toggle("Enable TEMP Mail", isOn: $modihMailEnabled)
+            Toggle("Enable Modih Mail", isOn: $modihMailEnabled)
                 .tint(.accentColor)
 
             TextField("API Base URL", text: $modihMailBaseURL)
@@ -91,7 +91,7 @@ struct AddOnsSettingsView: View {
                 }
             }
         } header: {
-            Text("TEMP Mail")
+            Text("Modih Mail")
         } footer: {
             Text("Free-tier inboxes work without an API key. Paid plans store credentials securely in the macOS Keychain. Powered by modih.in.")
                 .font(.caption)

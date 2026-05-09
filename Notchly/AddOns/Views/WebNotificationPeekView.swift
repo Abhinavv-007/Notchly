@@ -140,7 +140,7 @@ struct TempMailPeekView: View {
                 }
 
                 VStack(alignment: .leading, spacing: 1) {
-                    Text("TEMP Mail")
+                    Text("Modih Mail")
                         .font(.system(size: 9.5, weight: .semibold, design: .rounded))
                         .foregroundStyle(.white.opacity(0.55))
                         .contentTransition(.opacity)
@@ -204,7 +204,7 @@ struct TempMailPeekView: View {
 
     private var titleText: String {
         let title = coordinator.expandingView.title.trimmingCharacters(in: .whitespacesAndNewlines)
-        return title.isEmpty ? "New TEMP Mail message" : title
+        return title.isEmpty ? "New Modih Mail message" : title
     }
 
     private var subtitleText: String {
