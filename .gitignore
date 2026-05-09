@@ -1,15 +1,13 @@
 # Xcode
 *.xcuserstate
 *.xcuserdata
-*.xcscheme
 *.xcuserdatad
 *.pbxuser
 *.xccheckout
-*.xcscheme
 *.xcplayground
-*.xcuserdatad
 *.xctest
-*.xcuserdata
+*.xcodeproj/xcuserdata
+*.xcodeproj/project.xcuserdata
 *.xcodeproj/xcshareddata/WorkspaceSettings.xcsettings
 
 # CocoaPods
@@ -23,36 +21,26 @@ Carthage/Build/
 .swiftpm/
 .build/
 
-# Derived data
+# Derived data + build
 DerivedData/
-
-# Build output
 build/
-*.app
 *.dSYM
+*.ipa
+*.xcarchive
 
-# Temporary files
+# Distributable artifacts (DMG attached to GitHub Releases, not committed)
+dist/
+
+# OS junk
+.DS_Store
 *.swp
 *.swo
 *.tmp
 *.log
 
-# Other
-*.DS_Store
-*.vscode/
-*.idea/
-
-# User-specific files
-*.xcuserdatad/
-*.xcscheme
-*.xcodeproj/xcuserdata
-*.xcodeproj/project.xcuserdata
-
-# Build artifacts
-*.ipa
-*.xcarchive
-*.dSYM
+# Editor metadata
+.vscode/
+.idea/
 
 # Migration spec/plan files (kept on disk, excluded from repo)
 docs/superpowers/
-
