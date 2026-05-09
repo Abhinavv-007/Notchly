@@ -227,10 +227,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         
         if Defaults[.showOnAllDisplays], let viewModel = viewModels[uuid] {
             viewModel.open()
-            coordinator.currentView = .shelf
+            coordinator.currentView = .notchly
         } else if !Defaults[.showOnAllDisplays], let windowScreen = window?.screen, screen == windowScreen {
             vm.open()
-            coordinator.currentView = .shelf
+            coordinator.currentView = .notchly
         }
     }
 
@@ -283,14 +283,14 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
 
     func applicationDidFinishLaunching(_ notification: Notification) {
-        // One-time @AppStorage key migration: boringShelf -> notchlyShelfEnabled.
+        // One-time @AppStorage key migration: boringShelf -> notchlyEnabled.
         // V2 used "boringShelf"; renamed in V3 migration. Reads old key once,
         // writes the new key, marks migration complete so it never runs again.
         let migrationDefaults = UserDefaults.standard
         if !migrationDefaults.bool(forKey: "notchly.didMigrateShelfKey") {
             if migrationDefaults.object(forKey: "boringShelf") != nil {
                 let legacyValue = migrationDefaults.bool(forKey: "boringShelf")
-                migrationDefaults.set(legacyValue, forKey: "notchlyShelfEnabled")
+                migrationDefaults.set(legacyValue, forKey: "notchlyEnabled")
                 migrationDefaults.removeObject(forKey: "boringShelf")
             }
             migrationDefaults.set(true, forKey: "notchly.didMigrateShelfKey")

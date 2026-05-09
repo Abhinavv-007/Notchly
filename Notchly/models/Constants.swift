@@ -163,7 +163,7 @@ extension Defaults.Keys {
     static let optionKeyAction = Key<OptionKeyAction>("optionKeyAction", default: OptionKeyAction.openSettings)
     
     // MARK: Shelf
-    static let notchlyShelfEnabled = Key<Bool>("notchlyShelfEnabled", default: true)
+    static let notchlyEnabled = Key<Bool>("notchlyEnabled", default: true)
     static let openShelfByDefault = Key<Bool>("openShelfByDefault", default: true)
     static let shelfTapToOpen = Key<Bool>("shelfTapToOpen", default: true)
     static let quickShareProvider = Key<String>("quickShareProvider", default: QuickShareProvider.defaultProvider.id)

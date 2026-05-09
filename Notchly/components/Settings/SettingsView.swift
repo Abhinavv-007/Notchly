@@ -927,7 +927,7 @@ struct Shelf: View {
     var body: some View {
         Form {
             Section {
-                Defaults.Toggle(key: .notchlyShelfEnabled) {
+                Defaults.Toggle(key: .notchlyEnabled) {
                     Text("Enable shelf")
                 }
                 Defaults.Toggle(key: .openShelfByDefault) {

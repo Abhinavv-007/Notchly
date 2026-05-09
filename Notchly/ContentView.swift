@@ -219,7 +219,7 @@ struct ContentView: View {
 
             if isTargeted {
                 if vm.notchState == .closed {
-                    coordinator.currentView = .shelf
+                    coordinator.currentView = .notchly
                     doOpen()
                 }
                 return
@@ -347,7 +347,7 @@ struct ContentView: View {
                     switch coordinator.currentView {
                     case .home:
                         NotchHomeView(albumArtNamespace: albumArtNamespace)
-                    case .shelf:
+                    case .notchly:
                         NotchlyView()
                     case .addOns:
                         NotchAddonInlinePanel()
@@ -490,7 +490,7 @@ struct ContentView: View {
 
     @ViewBuilder
     var dragDetector: some View {
-        if Defaults[.notchlyShelfEnabled] && vm.notchState == .closed {
+        if Defaults[.notchlyEnabled] && vm.notchState == .closed {
             Color.clear
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
                 .contentShape(Rectangle())
