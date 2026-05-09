@@ -23,6 +23,8 @@ struct ContentView: View {
     @ObservedObject var batteryModel = BatteryStatusViewModel.shared
     @ObservedObject var brightnessManager = BrightnessManager.shared
     @ObservedObject var volumeManager = VolumeManager.shared
+    @ObservedObject var addonState = NotchAddonState.shared
+    @State private var hostingWindow: NSWindow?
     @State private var hoverTask: Task<Void, Never>?
     @State private var isHovering: Bool = false
     @State private var anyDropDebounceTask: Task<Void, Never>?
@@ -204,6 +206,11 @@ struct ContentView: View {
         }
         .padding(.bottom, 8)
         .frame(maxWidth: windowSize.width, maxHeight: windowSize.height, alignment: .top)
+        .overlay(alignment: .top) {
+            NotchSideIndicatorsView()
+                .environmentObject(vm)
+                .allowsHitTesting(vm.notchState == .closed)
+        }
         .compositingGroup()
         .scaleEffect(
             x: gestureScale,
@@ -212,8 +219,27 @@ struct ContentView: View {
         )
         .animation(.smooth, value: gestureProgress)
         .background(dragDetector)
+        .background(WindowReader { window in hostingWindow = window })
         .preferredColorScheme(.dark)
         .environmentObject(vm)
+        .onChange(of: vm.notchState) { _, newState in
+            if newState == .closed {
+                addonState.dismiss()
+                NotchOutsideClickMonitor.shared.stop()
+            }
+        }
+        .onChange(of: addonState.isInlinePanelVisible) { _, active in
+            if active {
+                NotchOutsideClickMonitor.shared.start(window: hostingWindow) {
+                    Task { @MainActor in
+                        guard vm.notchState == .open else { return }
+                        vm.close()
+                    }
+                }
+            } else {
+                NotchOutsideClickMonitor.shared.stop()
+            }
+        }
         .onChange(of: vm.anyDropZoneTargeting) { _, isTargeted in
             anyDropDebounceTask?.cancel()
 
