@@ -22,12 +22,11 @@ struct ModihMailPanel: View {
     private var vm: ModihMailViewModel { addonState.modihMail }
 
     var body: some View {
-        VStack(alignment: .leading, spacing: 8) {
+        VStack(alignment: .leading, spacing: 6) {
             header
             addressRow
             contentArea
                 .animation(.smooth(duration: 0.28), value: stateID)
-            Spacer(minLength: 0)
         }
         .onReceive(nowTimer) { now in nowTick = now }
         .onChange(of: vm.lastCopiedAt) { _, newValue in
@@ -210,10 +209,10 @@ struct ModihMailPanel: View {
 
     // Skeleton placeholder rows shown during initial fetch.
     private var skeletonRows: some View {
-        VStack(alignment: .leading, spacing: 6) {
-            ForEach(0..<3, id: \.self) { i in
+        VStack(alignment: .leading, spacing: 5) {
+            ForEach(0..<2, id: \.self) { i in
                 skeletonRow
-                    .opacity(0.85 - (Double(i) * 0.18))
+                    .opacity(0.85 - (Double(i) * 0.22))
             }
         }
     }
@@ -241,8 +240,8 @@ struct ModihMailPanel: View {
     }
 
     private func messagesList(_ messages: [ModihMessage]) -> some View {
-        VStack(alignment: .leading, spacing: 5) {
-            ForEach(messages.prefix(3)) { message in
+        VStack(alignment: .leading, spacing: 4) {
+            ForEach(messages.prefix(2)) { message in
                 messageRow(message)
                     .transition(.opacity.combined(with: .move(edge: .top)))
             }

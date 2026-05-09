@@ -38,17 +38,8 @@ struct NotchAddonInlinePanel: View {
     ) -> some View {
         content()
             .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
-            .padding(10)
-            .background(
-                RoundedRectangle(cornerRadius: 12, style: .continuous)
-                    .fill(Color.white.opacity(0.03))
-            )
-            .overlay(
-                RoundedRectangle(cornerRadius: 12, style: .continuous)
-                    .stroke(Color.white.opacity(0.08), lineWidth: 1)
-            )
-            .padding(.horizontal, 4)
-            .padding(.vertical, 2)
-            .frame(maxHeight: .infinity)
+            .padding(.horizontal, 8)
+            .padding(.top, 2)
+            .padding(.bottom, 6)
     }
 }
