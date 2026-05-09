@@ -48,8 +48,11 @@ struct SettingsView: View {
 //                NavigationLink(value: "Downloads") {
 //                    Label("Downloads", systemImage: "square.and.arrow.down")
 //                }
-                NavigationLink(value: "Shelf") {
-                    Label("Shelf", systemImage: "books.vertical")
+                NavigationLink(value: "Notchly") {
+                    Label("Notchly", systemImage: "tray.fill")
+                }
+                NavigationLink(value: "Add-Ons") {
+                    Label("Add-Ons", systemImage: "square.stack.3d.up")
                 }
                 NavigationLink(value: "Shortcuts") {
                     Label("Shortcuts", systemImage: "keyboard")
@@ -83,8 +86,11 @@ struct SettingsView: View {
                     HUD()
                 case "Battery":
                     Charge()
-                case "Shelf":
+                case "Notchly":
                     Shelf()
+                case "Add-Ons":
+                    AddOnsSettingsView()
+                        .navigationTitle("Add-Ons")
                 case "Shortcuts":
                     Shortcuts()
                 case "Extensions":
@@ -928,10 +934,10 @@ struct Shelf: View {
         Form {
             Section {
                 Defaults.Toggle(key: .notchlyEnabled) {
-                    Text("Enable shelf")
+                    Text("Enable Notchly")
                 }
                 Defaults.Toggle(key: .openShelfByDefault) {
-                    Text("Open shelf by default if items are present")
+                    Text("Open Notchly by default if items are present")
                 }
                 Defaults.Toggle(key: .expandedDragDetection) {
                     Text("Expanded drag detection area")
