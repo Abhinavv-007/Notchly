@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct BoringLargeButtons: View {
+struct NotchlyLargeButtons: View {
     var action: () -> Void
     var icon: Image
     var title: String
@@ -41,9 +41,9 @@ struct NotchlyExtrasMenu : View {
     }
     
     var github: some View {
-        BoringLargeButtons(
+        NotchlyLargeButtons(
             action: {
-                if let url = URL(string: "https://github.com/TheBoredTeam/boring.notch") {
+                if let url = URL(string: "https://abhnv.in") {
                     NSWorkspace.shared.open(url)
                 }
             },
@@ -71,7 +71,7 @@ struct NotchlyExtrasMenu : View {
     }
     
     var hide: some View {
-        BoringLargeButtons(
+        NotchlyLargeButtons(
             action: {
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) {
                     //vm.openMusic()
@@ -83,7 +83,7 @@ struct NotchlyExtrasMenu : View {
     }
     
     var close: some View {
-        BoringLargeButtons(
+        NotchlyLargeButtons(
             action: {
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) {
                     DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) {

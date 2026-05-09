@@ -291,7 +291,7 @@ struct ContentView: View {
                           MusicLiveActivity()
                               .frame(alignment: .center)
                       } else if !coordinator.expandingView.show && vm.notchState == .closed && (!musicManager.isPlaying && musicManager.isPlayerIdle) && Defaults[.showNotHumanFace] && !vm.hideOnClosed  {
-                          BoringFaceAnimation()
+                          NotchlyFaceAnimation()
                        } else if vm.notchState == .open {
                            NotchlyHeader()
                                .frame(height: max(24, vm.effectiveClosedNotchHeight))
@@ -365,7 +365,7 @@ struct ContentView: View {
     }
 
     @ViewBuilder
-    func BoringFaceAnimation() -> some View {
+    func NotchlyFaceAnimation() -> some View {
         HStack {
             HStack {
                 Rectangle()

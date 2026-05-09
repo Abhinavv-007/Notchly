@@ -21,6 +21,7 @@ final class NotchlyPersistenceService {
     private init() {
         let fm = FileManager.default
         let support = try? fm.url(for: .applicationSupportDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
+        // Legacy directory name retained from V2 to preserve user shelf state across the rebrand. Do not rename.
         let dir = (support ?? fm.temporaryDirectory).appendingPathComponent("boringNotch", isDirectory: true).appendingPathComponent("Shelf", isDirectory: true)
         try? fm.createDirectory(at: dir, withIntermediateDirectories: true)
         fileURL = dir.appendingPathComponent("items.json")

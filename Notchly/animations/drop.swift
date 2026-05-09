@@ -9,7 +9,7 @@ import Foundation
 import SwiftUI
 
 
-public class BoringAnimations {
+public class NotchlyAnimations {
     @Published var notchStyle: Style = .notch
     
     init() {
