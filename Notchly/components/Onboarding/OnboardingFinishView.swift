@@ -1,6 +1,6 @@
 //
 //  OnboardingFinishView.swift
-//  boringNotch
+//  Notchly
 //
 //  Created by Alexander on 2025-06-23.
 //
@@ -11,30 +11,62 @@ import SwiftUI
 struct OnboardingFinishView: View {
     let onFinish: () -> Void
     let onOpenSettings: () -> Void
+    @State private var isPresented = false
+    @State private var pulse = false
 
     var body: some View {
-        VStack(spacing: 20) {
-            Spacer()
+        ZStack {
+            VisualEffectView(material: .underWindowBackground, blendingMode: .behindWindow)
+                .ignoresSafeArea()
 
-            Image(systemName: "sparkles")
-                .font(.system(size: 60))
-                .foregroundColor(.effectiveAccent)
-                .padding()
+            LinearGradient(
+                colors: [
+                    Color.black.opacity(0.20),
+                    Color.effectiveAccent.opacity(0.09),
+                    Color.black.opacity(0.12)
+                ],
+                startPoint: .top,
+                endPoint: .bottom
+            )
+            .ignoresSafeArea()
 
-            Text("You're All Set!")
-                .font(.largeTitle)
-                .fontWeight(.bold)
+            VStack(spacing: 22) {
+                Spacer()
 
-            Text("You can now enjoy the app. If you want to tweak things further, you can always visit the settings.")
-                .font(.body)
-                .foregroundColor(.secondary)
-                .multilineTextAlignment(.center)
-                .padding(.horizontal, 40)
-            
-            Spacer()
-            Spacer()
+                ZStack {
+                    Circle()
+                        .fill(Color.effectiveAccent.opacity(pulse ? 0.18 : 0.08))
+                        .frame(width: 148, height: 148)
+                        .blur(radius: 18)
 
-            VStack(spacing: 12) {
+                    Image("logo2")
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width: 108, height: 108)
+                        .clipShape(RoundedRectangle(cornerRadius: 26, style: .continuous))
+                        .shadow(color: .black.opacity(0.25), radius: 18, y: 10)
+                }
+                .scaleEffect(isPresented ? 1 : 0.9)
+                .opacity(isPresented ? 1 : 0)
+
+                VStack(spacing: 8) {
+                    Text("Notchly is ready")
+                        .font(.system(.largeTitle, design: .rounded))
+                        .fontWeight(.bold)
+
+                    Text("The notch, mail, notifications, media, and quick sharing are set up. You can tune the details in Settings any time.")
+                        .font(.body)
+                        .foregroundColor(.secondary)
+                        .multilineTextAlignment(.center)
+                        .padding(.horizontal, 42)
+                }
+                .opacity(isPresented ? 1 : 0)
+                .offset(y: isPresented ? 0 : 10)
+
+                Spacer()
+                Spacer()
+
+                VStack(spacing: 12) {
                 Button(action: onOpenSettings) {
                     Label("Customize in Settings", systemImage: "gear")
                         .controlSize(.large)
@@ -45,14 +77,21 @@ struct OnboardingFinishView: View {
                     .buttonStyle(.borderedProminent)
                     .controlSize(.large)
                     .keyboardShortcut(.defaultAction)
+                }
+                .padding(24)
+                .opacity(isPresented ? 1 : 0)
+                .offset(y: isPresented ? 0 : 12)
             }
-            .padding(24)
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .background(
-            VisualEffectView(material: .underWindowBackground, blendingMode: .behindWindow)
-                .ignoresSafeArea()
-        )
+        .onAppear {
+            withAnimation(.spring(response: 0.52, dampingFraction: 0.84)) {
+                isPresented = true
+            }
+            withAnimation(.easeInOut(duration: 2.4).repeatForever(autoreverses: true)) {
+                pulse = true
+            }
+        }
     }
 }
 
